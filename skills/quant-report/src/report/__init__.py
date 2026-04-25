@@ -1,5 +1,2 @@
-"""quant-report skill - report generation."""
+"""Research report generation for agent4quant."""
 
-from .generator import generate_report
-
-__all__ = ["generate_report"]

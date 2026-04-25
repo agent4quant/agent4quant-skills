@@ -58,8 +58,8 @@ def add_indicators(frame: pd.DataFrame, indicators: list[str]) -> pd.DataFrame:
             low_min = df["low"].rolling(9).min()
             high_max = df["high"].rolling(9).max()
             rsv = (df["close"] - low_min) / (high_max - low_min).replace(0, pd.NA) * 100
-            df["k"] = rsv.ewm(alpha=1/3, adjust=False).mean()
-            df["d"] = df["k"].ewm(alpha=1/3, adjust=False).mean()
+            df["k"] = rsv.ewm(alpha=1 / 3, adjust=False).mean()
+            df["d"] = df["k"].ewm(alpha=1 / 3, adjust=False).mean()
             df["j"] = 3 * df["k"] - 2 * df["d"]
         elif indicator == "obv":
             direction = returns.fillna(0.0).apply(lambda value: 1 if value > 0 else (-1 if value < 0 else 0))

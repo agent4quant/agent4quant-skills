@@ -1,5 +1,2 @@
-"""quant-backtest skill - strategy backtesting engine."""
+"""Backtest services for agent4quant."""
 
-from .engine import run_backtest
-
-__all__ = ["run_backtest"]

@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-SITE_NAME = "Agent4Quant"
+from datetime import datetime, timezone
+
+SITE_NAME = "智能量化工具箱"
 SITE_URL = "https://agent4quant.com"
 DISCLAIMER = (
-    "Disclaimer: This tool is for quantitative research and educational purposes only. "
-    "It does not provide investment advice, real trading, or raw data services."
+    "免责声明：本工具仅提供量化研究、技术文档及使用示例，所有输出仅供学习与技术研究，"
+    "不构成任何投资建议，不提供实盘交易、证券咨询或原始数据售卖服务。"
 )
 
 
@@ -16,4 +18,6 @@ def build_metadata(skill: str, provider: str, interval: str) -> dict[str, str]:
         "provider": provider,
         "interval": interval,
         "disclaimer": DISCLAIMER,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
     }
+

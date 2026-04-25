@@ -1,0 +1,67 @@
+# {{ title }}
+
+{% if watermark -%}
+> Watermark: {{ watermark }}
+
+{% endif -%}
+## 1. 策略简介
+
+- 标的：{{ result.symbol }}
+- 策略：`{{ result.strategy }}`
+- Benchmark：`{{ result.benchmark.symbol }}`
+- 周期：{{ result.period.start }} 至 {{ result.period.end }} / {{ result.period.interval }}
+- 说明：{{ result.metadata.disclaimer }}
+
+## 2. 回测结果
+
+| 指标 | 数值 |
+| --- | --- |
+{% for key, value in result.metrics.items() -%}
+| {{ key }} | {{ value }} |
+{% endfor %}
+
+## 3. 风险分析
+
+- 最大回撤：{{ result.metrics.max_drawdown }}
+- 波动率：{{ result.metrics.volatility }}
+- 夏普比率：{{ result.metrics.sharpe }}
+- Benchmark 总收益：{{ result.metrics.benchmark_total_return }}
+- 超额收益：{{ result.metrics.excess_total_return }}
+
+## 4. 交易表现
+
+- 交易次数：{{ result.metrics.trade_count }}
+- 胜率：{{ result.metrics.win_rate }}
+- 总成本：{{ result.metrics.total_cost }}
+- 基准年化：{{ result.metrics.benchmark_annualized_return }}
+
+## 5. 成本模型
+
+{% for key, value in result.cost_model.items() -%}
+- `{{ key }}` = {{ value }}
+{% endfor %}
+
+## 6. 参数说明
+
+{% for key, value in result.strategy_params.items() -%}
+- `{{ key }}` = {{ value }}
+{% endfor %}
+
+## 7. 最近交易
+
+{% for trade in result.trades[:5] -%}
+- {{ trade.entry_date }} -> {{ trade.exit_date }} | 毛收益 {{ trade.gross_return }} | 净收益 {{ trade.net_return }} | 状态 {{ trade.status }}
+{% endfor %}
+{% if not result.trades -%}
+- 无完整交易记录
+{% endif %}
+
+## 8. 改进建议
+
+- 若回撤偏高，可增加风险过滤条件或缩短样本周期分段评估。
+- 若交易次数过少，可调整均线窗口或引入波动率过滤。
+- 若需要多策略对比，建议与 `quant-data` 输出配合，统一评估口径。
+
+## 9. 合规提示
+
+{{ result.trading_notes }}
