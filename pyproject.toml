@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent4quant"
+version = "0.1.0"
+description = "Compliance-first quant research toolkit and static site starter."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "jinja2>=3.1,<4.0",
+  "numpy>=2.0,<3.0",
+  "pandas>=2.2,<3.0",
+]
+
+[project.optional-dependencies]
+akshare = ["akshare>=1.17,<2.0"]
+yfinance = ["yfinance>=0.2.54,<1.0"]
+parquet = ["pyarrow>=16,<20"]
+duckdb = ["duckdb>=1.5,<2.0"]
+api = ["fastapi>=0.110,<1.0", "uvicorn>=0.30,<1.0"]
+dev = ["pytest>=8.0,<9.0"]
+
+[project.scripts]
+a4q = "agent4quant.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+agent4quant = ["templates/*.j2"]

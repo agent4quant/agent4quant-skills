@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agent4Quant Demo Research</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f3f0e8;
+        --paper: #fffdf8;
+        --ink: #1b1b18;
+        --muted: #5e5a52;
+        --line: #d9d0bf;
+        --accent: #8b5e34;
+        --accent-soft: rgba(139, 94, 52, 0.08);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top left, rgba(139, 94, 52, 0.12), transparent 32%),
+          linear-gradient(180deg, #f8f4eb, #f0ebe1);
+        color: var(--ink);
+        font-family: Georgia, "Songti SC", "Noto Serif SC", serif;
+      }
+      .page {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 40px 20px 60px;
+      }
+      .hero,
+      .section {
+        position: relative;
+        overflow: hidden;
+        background: var(--paper);
+        border: 1px solid rgba(139, 94, 52, 0.15);
+        border-radius: 28px;
+        box-shadow: 0 18px 60px rgba(47, 37, 24, 0.08);
+        padding: 28px;
+        margin-bottom: 20px;
+      }
+      .eyebrow,
+      .muted {
+        color: var(--muted);
+      }
+      .hero h1,
+      .section h2 {
+        margin: 0 0 12px;
+      }
+      .grid {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+      .metric {
+        padding: 16px;
+        border-radius: 18px;
+        background: var(--accent-soft);
+        border: 1px solid rgba(139, 94, 52, 0.12);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      .watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-24deg);
+        font-size: 72px;
+        color: rgba(139, 94, 52, 0.08);
+        pointer-events: none;
+        white-space: nowrap;
+        font-weight: 700;
+      }
+      @media (max-width: 680px) {
+        .hero,
+        .section {
+          border-radius: 20px;
+          padding: 20px;
+        }
+        .watermark {
+          font-size: 42px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      
+      
+      
+      
+      
+      
+      
+      <section class="hero">
+        <div class="watermark">Internal Draft</div>
+        <p class="eyebrow">Agent4Quant Research Report</p>
+        <h1>Agent4Quant Demo Research</h1>
+        <p class="muted">标的 DEMO.SH / 策略 sma_cross / Benchmark BMK.SH</p>
+        <p class="muted">周期 2025-01-01 至 2025-03-31 / 1d</p>
+        <p>免责声明：本工具仅提供量化研究、技术文档及使用示例，所有输出仅供学习与技术研究，不构成任何投资建议，不提供实盘交易、证券咨询或原始数据售卖服务。</p>
+      </section>
+
+      <section class="section">
+        <h2>核心指标</h2>
+        <div class="grid">
+          
+          <article class="metric">
+            <div class="muted">total_return</div>
+            <strong>-0.022081</strong>
+          </article>
+          
+          <article class="metric">
+            <div class="muted">gross_total_return</div>
+            <strong>-0.018145</strong>
+          </article>
+          
+          <article class="metric">
+            <div class="muted">benchmark_total_return</div>
+            <strong>0.103108</strong>
+          </article>
+          
+          <article class="metric">
+            <div class="muted">excess_total_return</div>
+            <strong>-0.125189</strong>
+          </article>
+          
+          <article class="metric">
+            <div class="muted">annualized_return</div>
+            <strong>-0.084165</strong>
+          </article>
+          
+          <article class="metric">
+            <div class="muted">benchmark_annualized_return</div>
+            <strong>0.471665</strong>
+          </article>
+          
+          <article class="metric">
+            <div class="muted">volatility</div>
+            <strong>0.123963</strong>
+          </article>
+          
+          <article class="metric">
+            <div class="muted">sharpe</div>
+            <strong>-0.678948</strong>
+          </article>
+          
+          <article class="metric">
+            <div class="muted">max_drawdown</div>
+            <strong>-0.080922</strong>
+          </article>
+          
+          <article class="metric">
+            <div class="muted">total_cost</div>
+            <strong>0.004</strong>
+          </article>
+          
+          <article class="metric">
+            <div class="muted">trade_count</div>
+            <strong>2</strong>
+          </article>
+          
+          <article class="metric">
+            <div class="muted">win_rate</div>
+            <strong>0.5</strong>
+          </article>
+          
+          
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>风险与交易摘要</h2>
+        <table>
+          <tbody>
+            <tr><th>最大回撤</th><td>-0.080922</td></tr>
+            <tr><th>波动率</th><td>0.123963</td></tr>
+            <tr><th>夏普比率</th><td>-0.678948</td></tr>
+            <tr><th>交易次数</th><td>2</td></tr>
+            <tr><th>胜率</th><td>0.5</td></tr>
+            <tr><th>总成本</th><td>0.004</td></tr>
+            <tr><th>超额收益</th><td>-0.125189</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>成本模型与参数</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>字段</th>
+              <th>值</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr><td>commission_bps</td><td>2.0</td></tr>
+            
+            <tr><td>slippage_bps</td><td>3.0</td></tr>
+            
+            <tr><td>stamp_duty_bps</td><td>10.0</td></tr>
+            
+            
+            <tr><td>fast</td><td>5.0</td></tr>
+            
+            <tr><td>slow</td><td>20.0</td></tr>
+            
+            
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>最近交易</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>入场</th>
+              <th>出场</th>
+              <th>毛收益</th>
+              <th>净收益</th>
+              <th>状态</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>2025-01-29 00:00:00 / 104.23</td>
+              <td>2025-02-27 00:00:00 / 106.14</td>
+              <td>0.018325</td>
+              <td>0.016289</td>
+              <td>closed</td>
+            </tr>
+            
+            <tr>
+              <td>2025-03-20 00:00:00 / 103.66</td>
+              <td>2025-03-26 00:00:00 / 103.13</td>
+              <td>-0.005113</td>
+              <td>-0.007102</td>
+              <td>closed</td>
+            </tr>
+            
+            
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

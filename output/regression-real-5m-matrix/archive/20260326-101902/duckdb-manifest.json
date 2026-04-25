@@ -1,0 +1,42 @@
+{
+  "provider": "duckdb",
+  "interval": "5m",
+  "db_path": "output/market/market.duckdb",
+  "symbols": 4,
+  "total_rows": 960,
+  "last_updated_at": "2026-03-26 10:20:41",
+  "items": [
+    {
+      "symbol": "000001.SZ",
+      "rows": 240,
+      "trade_days": 5,
+      "start_ts": "2026-03-19 09:35:00",
+      "end_ts": "2026-03-25 15:00:00",
+      "last_ingested_at": "2026-03-26 10:20:41"
+    },
+    {
+      "symbol": "300750.SZ",
+      "rows": 240,
+      "trade_days": 5,
+      "start_ts": "2026-03-19 09:35:00",
+      "end_ts": "2026-03-25 15:00:00",
+      "last_ingested_at": "2026-03-26 10:20:41"
+    },
+    {
+      "symbol": "600000.SH",
+      "rows": 240,
+      "trade_days": 5,
+      "start_ts": "2026-03-19 09:35:00",
+      "end_ts": "2026-03-25 15:00:00",
+      "last_ingested_at": "2026-03-26 10:20:41"
+    },
+    {
+      "symbol": "601318.SH",
+      "rows": 240,
+      "trade_days": 5,
+      "start_ts": "2026-03-19 09:35:00",
+      "end_ts": "2026-03-25 15:00:00",
+      "last_ingested_at": "2026-03-26 10:20:41"
+    }
+  ]
+}

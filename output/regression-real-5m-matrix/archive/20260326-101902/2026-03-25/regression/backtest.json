@@ -1,0 +1,627 @@
+{
+  "metadata": {
+    "site_name": "智能量化工具箱",
+    "site_url": "https://agent4quant.com",
+    "skill": "quant-backtest",
+    "provider": "duckdb",
+    "interval": "5m",
+    "disclaimer": "免责声明：本工具仅提供量化研究、技术文档及使用示例，所有输出仅供学习与技术研究，不构成任何投资建议，不提供实盘交易、证券咨询或原始数据售卖服务。",
+    "generated_at": "2026-03-26T02:20:48.904552+00:00"
+  },
+  "strategy": "sma_cross",
+  "strategy_params": {
+    "fast": 3.0,
+    "slow": 8.0
+  },
+  "cost_model": {
+    "commission_bps": 0.0,
+    "slippage_bps": 0.0,
+    "stamp_duty_bps": 0.0
+  },
+  "benchmark": {
+    "symbol": "600000.SH"
+  },
+  "data_config": {
+    "adjust": "none",
+    "market": null
+  },
+  "symbol": "000001.SZ",
+  "period": {
+    "start": "2026-03-25 09:35:00",
+    "end": "2026-03-25 15:00:00",
+    "interval": "5m"
+  },
+  "metrics": {
+    "total_return": 0.004596,
+    "gross_total_return": 0.004596,
+    "benchmark_total_return": 0.014056,
+    "excess_total_return": -0.00946,
+    "annualized_return": 2.176096,
+    "benchmark_annualized_return": 32.700234,
+    "volatility": 0.095085,
+    "sharpe": 22.885692,
+    "max_drawdown": -0.002751,
+    "total_cost": 0.0,
+    "trade_count": 3,
+    "win_rate": 0.666667
+  },
+  "equity_curve": [
+    {
+      "date": "2026-03-25 09:35:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 09:40:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 09:45:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 09:50:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 09:55:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 10:00:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 10:05:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 10:10:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 10:15:00",
+      "equity": 1.000922,
+      "gross_equity": 1.000922,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 10:20:00",
+      "equity": 0.999078,
+      "gross_equity": 0.999078,
+      "drawdown": -0.001842,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 10:25:00",
+      "equity": 0.999078,
+      "gross_equity": 0.999078,
+      "drawdown": -0.001842,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 10:30:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": -0.000921,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 10:35:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": -0.000921,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 10:40:00",
+      "equity": 0.999079,
+      "gross_equity": 0.999079,
+      "drawdown": -0.001841,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 10:45:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": -0.000921,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 10:50:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": -0.000921,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 10:55:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": -0.000921,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 11:00:00",
+      "equity": 1.0,
+      "gross_equity": 1.0,
+      "drawdown": -0.000921,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 11:05:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 11:10:00",
+      "equity": 1.000921,
+      "gross_equity": 1.000921,
+      "drawdown": -0.000919,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 11:15:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 11:20:00",
+      "equity": 1.002762,
+      "gross_equity": 1.002762,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 11:25:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 11:30:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 13:05:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 13:10:00",
+      "equity": 1.002762,
+      "gross_equity": 1.002762,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 13:15:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 13:20:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 13:25:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 13:30:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 13:35:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 13:40:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 13:45:00",
+      "equity": 1.000003,
+      "gross_equity": 1.000003,
+      "drawdown": -0.002751,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 13:50:00",
+      "equity": 1.002761,
+      "gross_equity": 1.002761,
+      "drawdown": -2e-06,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 13:55:00",
+      "equity": 1.002761,
+      "gross_equity": 1.002761,
+      "drawdown": -2e-06,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 14:00:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 14:05:00",
+      "equity": 1.000003,
+      "gross_equity": 1.000003,
+      "drawdown": -0.002751,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 14:10:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 14:15:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 14:20:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 14:25:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 14:30:00",
+      "equity": 1.001842,
+      "gross_equity": 1.001842,
+      "drawdown": -0.000918,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 14:35:00",
+      "equity": 1.00276,
+      "gross_equity": 1.00276,
+      "drawdown": -3e-06,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 14:40:00",
+      "equity": 1.003678,
+      "gross_equity": 1.003678,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 14:45:00",
+      "equity": 1.004596,
+      "gross_equity": 1.004596,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 14:50:00",
+      "equity": 1.004596,
+      "gross_equity": 1.004596,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 14:55:00",
+      "equity": 1.004596,
+      "gross_equity": 1.004596,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    },
+    {
+      "date": "2026-03-25 15:00:00",
+      "equity": 1.004596,
+      "gross_equity": 1.004596,
+      "drawdown": 0.0,
+      "cost_return": 0.0
+    }
+  ],
+  "benchmark_curve": [
+    {
+      "date": "2026-03-25 09:35:00",
+      "benchmark_equity": 1.0
+    },
+    {
+      "date": "2026-03-25 09:40:00",
+      "benchmark_equity": 1.002008
+    },
+    {
+      "date": "2026-03-25 09:45:00",
+      "benchmark_equity": 1.004016
+    },
+    {
+      "date": "2026-03-25 09:50:00",
+      "benchmark_equity": 1.007028
+    },
+    {
+      "date": "2026-03-25 09:55:00",
+      "benchmark_equity": 1.006024
+    },
+    {
+      "date": "2026-03-25 10:00:00",
+      "benchmark_equity": 1.00502
+    },
+    {
+      "date": "2026-03-25 10:05:00",
+      "benchmark_equity": 1.00502
+    },
+    {
+      "date": "2026-03-25 10:10:00",
+      "benchmark_equity": 1.007028
+    },
+    {
+      "date": "2026-03-25 10:15:00",
+      "benchmark_equity": 1.008032
+    },
+    {
+      "date": "2026-03-25 10:20:00",
+      "benchmark_equity": 1.007028
+    },
+    {
+      "date": "2026-03-25 10:25:00",
+      "benchmark_equity": 1.006024
+    },
+    {
+      "date": "2026-03-25 10:30:00",
+      "benchmark_equity": 1.007028
+    },
+    {
+      "date": "2026-03-25 10:35:00",
+      "benchmark_equity": 1.008032
+    },
+    {
+      "date": "2026-03-25 10:40:00",
+      "benchmark_equity": 1.009036
+    },
+    {
+      "date": "2026-03-25 10:45:00",
+      "benchmark_equity": 1.008032
+    },
+    {
+      "date": "2026-03-25 10:50:00",
+      "benchmark_equity": 1.007028
+    },
+    {
+      "date": "2026-03-25 10:55:00",
+      "benchmark_equity": 1.008032
+    },
+    {
+      "date": "2026-03-25 11:00:00",
+      "benchmark_equity": 1.008032
+    },
+    {
+      "date": "2026-03-25 11:05:00",
+      "benchmark_equity": 1.009036
+    },
+    {
+      "date": "2026-03-25 11:10:00",
+      "benchmark_equity": 1.008032
+    },
+    {
+      "date": "2026-03-25 11:15:00",
+      "benchmark_equity": 1.01004
+    },
+    {
+      "date": "2026-03-25 11:20:00",
+      "benchmark_equity": 1.009036
+    },
+    {
+      "date": "2026-03-25 11:25:00",
+      "benchmark_equity": 1.009036
+    },
+    {
+      "date": "2026-03-25 11:30:00",
+      "benchmark_equity": 1.012048
+    },
+    {
+      "date": "2026-03-25 13:05:00",
+      "benchmark_equity": 1.009036
+    },
+    {
+      "date": "2026-03-25 13:10:00",
+      "benchmark_equity": 1.011044
+    },
+    {
+      "date": "2026-03-25 13:15:00",
+      "benchmark_equity": 1.01004
+    },
+    {
+      "date": "2026-03-25 13:20:00",
+      "benchmark_equity": 1.01004
+    },
+    {
+      "date": "2026-03-25 13:25:00",
+      "benchmark_equity": 1.01004
+    },
+    {
+      "date": "2026-03-25 13:30:00",
+      "benchmark_equity": 1.011044
+    },
+    {
+      "date": "2026-03-25 13:35:00",
+      "benchmark_equity": 1.014056
+    },
+    {
+      "date": "2026-03-25 13:40:00",
+      "benchmark_equity": 1.014056
+    },
+    {
+      "date": "2026-03-25 13:45:00",
+      "benchmark_equity": 1.013052
+    },
+    {
+      "date": "2026-03-25 13:50:00",
+      "benchmark_equity": 1.01506
+    },
+    {
+      "date": "2026-03-25 13:55:00",
+      "benchmark_equity": 1.013052
+    },
+    {
+      "date": "2026-03-25 14:00:00",
+      "benchmark_equity": 1.014056
+    },
+    {
+      "date": "2026-03-25 14:05:00",
+      "benchmark_equity": 1.013052
+    },
+    {
+      "date": "2026-03-25 14:10:00",
+      "benchmark_equity": 1.013052
+    },
+    {
+      "date": "2026-03-25 14:15:00",
+      "benchmark_equity": 1.012048
+    },
+    {
+      "date": "2026-03-25 14:20:00",
+      "benchmark_equity": 1.012048
+    },
+    {
+      "date": "2026-03-25 14:25:00",
+      "benchmark_equity": 1.01004
+    },
+    {
+      "date": "2026-03-25 14:30:00",
+      "benchmark_equity": 1.01004
+    },
+    {
+      "date": "2026-03-25 14:35:00",
+      "benchmark_equity": 1.013052
+    },
+    {
+      "date": "2026-03-25 14:40:00",
+      "benchmark_equity": 1.012048
+    },
+    {
+      "date": "2026-03-25 14:45:00",
+      "benchmark_equity": 1.012048
+    },
+    {
+      "date": "2026-03-25 14:50:00",
+      "benchmark_equity": 1.014056
+    },
+    {
+      "date": "2026-03-25 14:55:00",
+      "benchmark_equity": 1.014056
+    },
+    {
+      "date": "2026-03-25 15:00:00",
+      "benchmark_equity": 1.014056
+    }
+  ],
+  "trades": [
+    {
+      "entry_date": "2026-03-25 10:15:00",
+      "entry_price": 10.86,
+      "exit_date": "2026-03-25 10:35:00",
+      "exit_price": 10.86,
+      "gross_return": 0.0,
+      "net_return": 0.0,
+      "holding_bars": 4,
+      "cost_rate": 0.0,
+      "status": "closed"
+    },
+    {
+      "entry_date": "2026-03-25 10:40:00",
+      "entry_price": 10.85,
+      "exit_date": "2026-03-25 13:30:00",
+      "exit_price": 10.87,
+      "gross_return": 0.001843,
+      "net_return": 0.001843,
+      "holding_bars": 16,
+      "cost_rate": 0.0,
+      "status": "closed"
+    },
+    {
+      "entry_date": "2026-03-25 13:45:00",
+      "entry_price": 10.88,
+      "exit_date": "2026-03-25 14:15:00",
+      "exit_price": 10.9,
+      "gross_return": 0.001838,
+      "net_return": 0.001838,
+      "holding_bars": 6,
+      "cost_rate": 0.0,
+      "status": "closed"
+    },
+    {
+      "entry_date": "2026-03-25 14:25:00",
+      "entry_price": 10.91,
+      "exit_date": "2026-03-25 15:00:00",
+      "exit_price": 10.94,
+      "gross_return": 0.00275,
+      "net_return": 0.00275,
+      "holding_bars": 7,
+      "cost_rate": 0.0,
+      "status": "open"
+    }
+  ],
+  "trading_notes": "免责声明：本工具仅提供量化研究、技术文档及使用示例，所有输出仅供学习与技术研究，不构成任何投资建议，不提供实盘交易、证券咨询或原始数据售卖服务。"
+}

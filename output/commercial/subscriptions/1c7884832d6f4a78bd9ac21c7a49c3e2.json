@@ -1,0 +1,21 @@
+{
+  "subscription_id": "1c7884832d6f4a78bd9ac21c7a49c3e2",
+  "account_id": "71dd8da7b5884aca8a9b71d2c97d0eee",
+  "plan": "professional",
+  "billing_cycle": "monthly",
+  "provider": "manual",
+  "status": "pending",
+  "enabled_features": [
+    "demo_data",
+    "online_daily_fetch",
+    "basic_backtest",
+    "markdown_report",
+    "html_report",
+    "pdf_report",
+    "async_tasks",
+    "showcase_assets",
+    "provider_profiles",
+    "priority_support"
+  ],
+  "created_at": "2026-03-27T11:22:22.181473+00:00"
+}

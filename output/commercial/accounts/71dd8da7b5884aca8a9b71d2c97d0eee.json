@@ -1,0 +1,21 @@
+{
+  "account_id": "71dd8da7b5884aca8a9b71d2c97d0eee",
+  "name": "Alice",
+  "email": "alice@example.com",
+  "company": "A4Q Labs",
+  "plan": "professional",
+  "enabled_features": [
+    "demo_data",
+    "online_daily_fetch",
+    "basic_backtest",
+    "markdown_report",
+    "html_report",
+    "pdf_report",
+    "async_tasks",
+    "showcase_assets",
+    "provider_profiles",
+    "priority_support"
+  ],
+  "status": "active",
+  "created_at": "2026-03-27T11:22:22.178407+00:00"
+}

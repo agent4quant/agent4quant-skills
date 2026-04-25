@@ -1,0 +1,23 @@
+{
+  "task_id": "89ae26e70a764ad59f541b85d8afb5aa",
+  "task_type": "report.generate",
+  "status": "completed",
+  "created_at": "2026-03-26T07:15:24.363005+00:00",
+  "started_at": "2026-03-26T07:15:24.363794+00:00",
+  "completed_at": "2026-03-26T07:15:25.920888+00:00",
+  "payload": {
+    "input_path": "/private/var/folders/c_/pyqxqrrd6yx0_wcmbkq643jw0000gn/T/pytest-of-administrator/pytest-73/test_async_report_task_lifecyc0/demo-backtest.json",
+    "output_path": "/private/var/folders/c_/pyqxqrrd6yx0_wcmbkq643jw0000gn/T/pytest-of-administrator/pytest-73/test_async_report_task_lifecyc0/demo-report.pdf",
+    "title": "Demo Task Report",
+    "output_format": "pdf",
+    "watermark": "Internal Draft"
+  },
+  "result": {
+    "input_path": "/private/var/folders/c_/pyqxqrrd6yx0_wcmbkq643jw0000gn/T/pytest-of-administrator/pytest-73/test_async_report_task_lifecyc0/demo-backtest.json",
+    "output_path": "/private/var/folders/c_/pyqxqrrd6yx0_wcmbkq643jw0000gn/T/pytest-of-administrator/pytest-73/test_async_report_task_lifecyc0/demo-report.pdf",
+    "title": "Demo Task Report",
+    "output_format": "pdf",
+    "watermark": "Internal Draft"
+  },
+  "error": null
+}

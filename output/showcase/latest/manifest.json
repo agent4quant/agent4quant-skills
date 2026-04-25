@@ -1,0 +1,41 @@
+{
+  "output_dir": "output/showcase/latest",
+  "items": [
+    {
+      "name": "000001-akshare.json",
+      "size_bytes": 14303,
+      "type": "json",
+      "path": "output/showcase/latest/000001-akshare.json"
+    },
+    {
+      "name": "demo-backtest.html",
+      "size_bytes": 20353,
+      "type": "html",
+      "path": "output/showcase/latest/demo-backtest.html"
+    },
+    {
+      "name": "demo-data.csv",
+      "size_bytes": 16544,
+      "type": "csv",
+      "path": "output/showcase/latest/demo-data.csv"
+    },
+    {
+      "name": "demo-report.html",
+      "size_bytes": 7240,
+      "type": "html",
+      "path": "output/showcase/latest/demo-report.html"
+    },
+    {
+      "name": "demo-report.pdf",
+      "size_bytes": 39638,
+      "type": "pdf",
+      "path": "output/showcase/latest/demo-report.pdf"
+    },
+    {
+      "name": "real-5m-summary.json",
+      "size_bytes": 1215,
+      "type": "json",
+      "path": "output/showcase/latest/real-5m-summary.json"
+    }
+  ]
+}

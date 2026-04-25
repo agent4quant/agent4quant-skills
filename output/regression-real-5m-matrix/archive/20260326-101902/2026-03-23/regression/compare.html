@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>000001.SZ 多策略对比报告</title>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <style>
+      body { margin: 0; padding: 32px; font-family: "Helvetica Neue", "PingFang SC", sans-serif; background: #eef3f0; color: #0f172a; }
+      .wrap { max-width: 1120px; margin: 0 auto; }
+      .card { background: #ffffff; border-radius: 24px; padding: 24px; margin-bottom: 18px; box-shadow: 0 18px 42px rgba(15,23,42,0.08); }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+      .metric { padding: 16px; border-radius: 16px; background: linear-gradient(135deg, #e8f5ee, #f8fbfa); }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #dde6e0; }
+      .small { color: #64748b; font-size: 14px; }
+      .chart { height: 380px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <section class="card">
+        <p class="small">Agent4Quant / Strategy Compare Report</p>
+        <h1>000001.SZ 多策略对比</h1>
+        <p class="small">Ranking Metric: sharpe / Benchmark: 600000.SH</p>
+        
+        <p class="small">Adjust: none / Market: default</p>
+        <p>免责声明：本工具仅提供量化研究、技术文档及使用示例，所有输出仅供学习与技术研究，不构成任何投资建议，不提供实盘交易、证券咨询或原始数据售卖服务。</p>
+      </section>
+      <section class="card">
+        <h2>摘要</h2>
+        <div class="grid">
+          <div class="metric"><div class="small">Total Strategies</div><strong>3</strong></div>
+          <div class="metric"><div class="small">Filtered Out</div><strong>0</strong></div>
+          <div class="metric"><div class="small">Returned</div><strong>3</strong></div>
+          <div class="metric"><div class="small">Best Strategy</div><strong>boll_breakout</strong></div>
+          <div class="metric"><div class="small">Best sharpe</div><strong>0.0</strong></div>
+        </div>
+      </section>
+      <section class="card">
+        <h2>收益与风险分布</h2>
+        <div id="compare-chart" class="chart"></div>
+      </section>
+      <section class="card">
+        <h2>策略排名</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>策略</th>
+              <th>参数</th>
+              <th>sharpe</th>
+              <th>total_return</th>
+              <th>benchmark_total_return</th>
+              <th>excess_total_return</th>
+              <th>max_drawdown</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>1</td>
+              <td>boll_breakout</td>
+              <td>{}</td>
+              <td>0.0</td>
+              <td>0.0</td>
+              <td>-0.026654</td>
+              <td>0.026654</td>
+              <td>0.0</td>
+            </tr>
+            
+            <tr>
+              <td>2</td>
+              <td>macd</td>
+              <td>{}</td>
+              <td>-5.711289</td>
+              <td>-0.00377</td>
+              <td>-0.026654</td>
+              <td>0.022883</td>
+              <td>-0.005644</td>
+            </tr>
+            
+            <tr>
+              <td>3</td>
+              <td>sma_cross</td>
+              <td>{'fast': 3.0, 'slow': 8.0}</td>
+              <td>-5.7822</td>
+              <td>-0.002825</td>
+              <td>-0.026654</td>
+              <td>0.023829</td>
+              <td>-0.004704</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </section>
+    </div>
+    <script>
+      const compareRows = [{"annualized_return": 0.0, "benchmark_annualized_return": -0.998895, "benchmark_total_return": -0.026654, "excess_total_return": 0.026654, "gross_total_return": 0.0, "max_drawdown": 0.0, "sharpe": 0.0, "strategy": "boll_breakout", "strategy_params": {}, "total_cost": 0.0, "total_return": 0.0, "trade_count": 0, "volatility": 0.0, "win_rate": 0.0}, {"annualized_return": -0.613971, "benchmark_annualized_return": -0.998895, "benchmark_total_return": -0.026654, "excess_total_return": 0.022883, "gross_total_return": -0.00377, "max_drawdown": -0.005644, "sharpe": -5.711289, "strategy": "macd", "strategy_params": {}, "total_cost": 0.0, "total_return": -0.00377, "trade_count": 1, "volatility": 0.107501, "win_rate": 0.0}, {"annualized_return": -0.509766, "benchmark_annualized_return": -0.998895, "benchmark_total_return": -0.026654, "excess_total_return": 0.023829, "gross_total_return": -0.002825, "max_drawdown": -0.004704, "sharpe": -5.7822, "strategy": "sma_cross", "strategy_params": {"fast": 3.0, "slow": 8.0}, "total_cost": 0.0, "total_return": -0.002825, "trade_count": 1, "volatility": 0.088161, "win_rate": 0.0}];
+      Plotly.newPlot(
+        "compare-chart",
+        [
+          {
+            x: compareRows.map((row) => row.strategy),
+            y: compareRows.map((row) => row.total_return),
+            type: "bar",
+            name: "total_return",
+            marker: { color: "#15803d" }
+          },
+          {
+            x: compareRows.map((row) => row.strategy),
+            y: compareRows.map((row) => row.max_drawdown),
+            type: "scatter",
+            mode: "lines+markers",
+            name: "max_drawdown",
+            yaxis: "y2",
+            line: { color: "#b91c1c", width: 2 }
+          }
+        ],
+        {
+          margin: { t: 20, r: 48, b: 48, l: 48 },
+          paper_bgcolor: "#ffffff",
+          plot_bgcolor: "#ffffff",
+          yaxis: { title: "total_return" },
+          yaxis2: { title: "max_drawdown", overlaying: "y", side: "right" },
+          legend: { orientation: "h" }
+        },
+        { responsive: true }
+      );
+    </script>
+  </body>
+</html>

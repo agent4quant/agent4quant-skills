@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agent4Quant 案例页 | Cases</title>
+    <meta
+      name="description"
+      content="Agent4Quant 的研究案例、showcase 样品与典型工作流展示。"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script defer src="./assets/site.js"></script>
+  </head>
+  <body data-page="cases">
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="./index.html">Agent4Quant</a>
+        <nav>
+          <a href="./index.html">首页</a>
+          <a href="./trust.html">信任与安全</a>
+          <a href="./compliance.html">合规说明</a>
+          <a href="./skills.html">技能矩阵</a>
+          <a href="./cases.html">案例页</a>
+          <a href="./pricing.html">定价方案</a>
+          <a href="./contact.html">咨询入口</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Cases</p>
+          <h1>案例与展示物</h1>
+          <p class="lead">当前案例页优先围绕 `quant-data`、`quant-backtest`、`quant-report` 三件套展开，目标是把“本地研究闭环”讲清楚，而不是把所有模块平均铺开。</p>
+        </div>
+
+        <div class="grid three">
+          <article class="panel accent">
+            <p class="status live">Core Skill</p>
+            <h2>quant-data</h2>
+            <p>先解决研究前的数据准备问题：在线取数、兼容输入、指标补充和基础校验。</p>
+          </article>
+          <article class="panel">
+            <p class="status live">Core Skill</p>
+            <h2>quant-backtest</h2>
+            <p>把研究数据转成可验证的策略结论，输出 benchmark、成本、trade log 和 Plotly 结果。</p>
+          </article>
+          <article class="panel">
+            <p class="status live">Core Skill</p>
+            <h2>quant-report</h2>
+            <p>把结果变成可交付研究报告，输出 Markdown / HTML / PDF 样品，直接进入展示和沟通环节。</p>
+          </article>
+        </div>
+
+        <div class="section-head" style="margin-top: 44px;">
+          <p class="eyebrow">Flow</p>
+          <h2>核心三件套闭环</h2>
+        </div>
+
+        <div class="grid three">
+          <article class="panel">
+            <h3>第一步：数据准备</h3>
+            <ul class="clean-list">
+              <li>`AkShare` 作为 A 股主入口</li>
+              <li>`yfinance` 作为港美股主入口</li>
+              <li>兼容 CSV / local / DuckDB 自有输入</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>第二步：策略验证</h3>
+            <ul class="clean-list">
+              <li>单策略回测与参数扫描</li>
+              <li>多策略对比、benchmark、成本模型</li>
+              <li>Plotly HTML 结果和 JSON 摘要</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>第三步：研究交付</h3>
+            <ul class="clean-list">
+              <li>输出 Markdown / HTML / PDF 报告</li>
+              <li>保留免责声明和水印控制</li>
+              <li>作为官网、GitHub、咨询沟通样品</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="section-head" style="margin-top: 44px;">
+          <p class="eyebrow">Cases</p>
+          <h2>当前优先案例</h2>
+        </div>
+
+        <div class="grid three">
+          <article class="panel">
+            <h3>案例 A：A 股在线研究准备</h3>
+            <p>使用 `quant-data` 拉取 A 股日线、补技术指标、输出 JSON，适合新用户第一次上手。</p>
+          </article>
+          <article class="panel">
+            <h3>案例 B：策略验证与对比</h3>
+            <p>使用 `quant-backtest` 生成 benchmark、trade log 和 Plotly HTML，适合作为功能展示主样品。</p>
+          </article>
+          <article class="panel accent">
+            <h3>案例 C：研究报告交付</h3>
+            <p>使用 `quant-report` 输出 PDF / HTML 报告，把研究结果变成可发给他人的正式交付物。</p>
+          </article>
+        </div>
+
+        <div class="grid two" style="margin-top: 32px;">
+          <article class="panel">
+            <h3>核心三件套样品</h3>
+            <ul class="clean-list">
+              <li>`demo-data.csv` / `000001-akshare.json`</li>
+              <li>`demo-backtest.html`</li>
+              <li>`demo-report.pdf`</li>
+              <li>`demo-report.html`</li>
+            </ul>
+          </article>
+          <article class="panel accent">
+            <h3>下一步动作</h3>
+            <p>当前优先把三件套案例变成 GitHub README、Release、官网案例页和咨询沟通中的统一展示物。</p>
+            <a class="button primary" href="./contact.html">咨询案例合作</a>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>Agent4Quant</strong>
+          <p>案例页建议在备案通过后正式上线。</p>
+        </div>
+        <div>
+          <p class="muted-text">© <span data-year></span> agent4quant.com</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

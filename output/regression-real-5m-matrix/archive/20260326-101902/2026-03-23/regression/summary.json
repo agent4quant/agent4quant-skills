@@ -1,0 +1,62 @@
+{
+  "manifest": {
+    "symbols": 4,
+    "total_rows": 672
+  },
+  "backtest": {
+    "total_return": -0.002825,
+    "gross_total_return": -0.002825,
+    "benchmark_total_return": -0.026654,
+    "excess_total_return": 0.023829,
+    "annualized_return": -0.509766,
+    "benchmark_annualized_return": -0.998895,
+    "volatility": 0.088161,
+    "sharpe": -5.7822,
+    "max_drawdown": -0.004704,
+    "total_cost": 0.0,
+    "trade_count": 1,
+    "win_rate": 0.0
+  },
+  "compare": {
+    "best_strategy": "boll_breakout",
+    "best_metric_value": 0.0,
+    "returned_experiments": 3
+  },
+  "risk": {
+    "confidence_level": 0.95,
+    "observations": 48,
+    "mean_return": -0.000275,
+    "volatility": 0.001969,
+    "annualized_volatility": 0.216567,
+    "value_at_risk": -0.001908,
+    "conditional_var": -0.004255,
+    "max_drawdown": -0.017874,
+    "worst_return": -0.008499,
+    "best_return": 0.004762
+  },
+  "alpha": {
+    "best_factor": "rsi_14",
+    "results": [
+      {
+        "factor": "rsi_14",
+        "observations": 32,
+        "ic": 0.141342,
+        "rank_ic": 0.094663,
+        "ir": 0.07677,
+        "rank_ir": 0.323396,
+        "positive_ic_rate": 0.521739,
+        "forward_return_mean": -0.000683
+      },
+      {
+        "factor": "ma_5",
+        "observations": 42,
+        "ic": -0.059836,
+        "rank_ic": 0.00667,
+        "ir": -0.611302,
+        "rank_ir": -0.501524,
+        "positive_ic_rate": 0.30303,
+        "forward_return_mean": -0.000677
+      }
+    ]
+  }
+}

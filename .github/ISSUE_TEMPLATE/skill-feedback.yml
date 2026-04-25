@@ -1,0 +1,34 @@
+name: Skill Feedback
+description: Submit skill usability feedback or release packaging suggestions
+title: "[Skill] "
+labels:
+  - skill
+body:
+  - type: input
+    id: skill_name
+    attributes:
+      label: Skill 名称
+      placeholder: quant-data / quant-backtest / quant-report / quant-alpha / quant-risk
+    validations:
+      required: true
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 使用场景
+      description: 你想完成什么研究任务
+    validations:
+      required: true
+  - type: textarea
+    id: friction
+    attributes:
+      label: 当前阻碍
+      description: 哪个步骤最不顺、最难理解或最难复用
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 改进建议
+      description: 希望补充哪些命令、模板、文档、FAQ 或 showcase
+    validations:
+      required: true

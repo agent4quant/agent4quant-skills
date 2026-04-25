@@ -1,0 +1,423 @@
+{
+  "run_id": "20260326-101902",
+  "db_path": "output/market/market.duckdb",
+  "provider": "auto",
+  "primary_symbol": "000001.SZ",
+  "benchmark_symbol": "600000.SH",
+  "symbols": [
+    "000001.SZ",
+    "600000.SH",
+    "300750.SZ",
+    "601318.SH"
+  ],
+  "trade_dates": [
+    "2026-03-19",
+    "2026-03-20",
+    "2026-03-23",
+    "2026-03-24",
+    "2026-03-25"
+  ],
+  "days": [
+    {
+      "trade_date": "2026-03-19",
+      "synced_symbols": 4,
+      "synced_rows": 192,
+      "sources": [
+        "akshare.stock_zh_a_hist_min_em.5m"
+      ],
+      "regression": {
+        "manifest": {
+          "symbols": 4,
+          "total_rows": 288
+        },
+        "backtest": {
+          "total_return": -0.00366,
+          "gross_total_return": -0.00366,
+          "benchmark_total_return": 0.00097,
+          "excess_total_return": -0.00463,
+          "annualized_return": -0.603126,
+          "benchmark_annualized_return": 0.276733,
+          "volatility": 0.064502,
+          "sharpe": -9.350478,
+          "max_drawdown": -0.003662,
+          "total_cost": 0.0,
+          "trade_count": 3,
+          "win_rate": 0.0
+        },
+        "compare": {
+          "best_strategy": "boll_breakout",
+          "best_metric_value": 0.0,
+          "returned_experiments": 3
+        },
+        "risk": {
+          "confidence_level": 0.95,
+          "observations": 48,
+          "mean_return": -5.7e-05,
+          "volatility": 0.001081,
+          "annualized_volatility": 0.118851,
+          "value_at_risk": -0.00183,
+          "conditional_var": -0.001832,
+          "max_drawdown": -0.008212,
+          "worst_return": -0.001833,
+          "best_return": 0.003666
+        },
+        "alpha": {
+          "best_factor": "ma_5",
+          "results": [
+            {
+              "factor": "ma_5",
+              "observations": 42,
+              "ic": -0.419865,
+              "rank_ic": -0.423151,
+              "ir": -1.894065,
+              "rank_ir": -1.656826,
+              "positive_ic_rate": 0.090909,
+              "forward_return_mean": -0.000348
+            },
+            {
+              "factor": "rsi_14",
+              "observations": 32,
+              "ic": -0.344532,
+              "rank_ic": -0.385731,
+              "ir": -1.757925,
+              "rank_ir": -2.156032,
+              "positive_ic_rate": 0.086957,
+              "forward_return_mean": -0.000143
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trade_date": "2026-03-20",
+      "synced_symbols": 4,
+      "synced_rows": 192,
+      "sources": [
+        "akshare.stock_zh_a_hist_min_em.5m"
+      ],
+      "regression": {
+        "manifest": {
+          "symbols": 4,
+          "total_rows": 480
+        },
+        "backtest": {
+          "total_return": -0.00553,
+          "gross_total_return": -0.00553,
+          "benchmark_total_return": -0.009634,
+          "excess_total_return": 0.004104,
+          "annualized_return": -0.752765,
+          "benchmark_annualized_return": -0.912797,
+          "volatility": 0.079166,
+          "sharpe": -9.508745,
+          "max_drawdown": -0.00736,
+          "total_cost": 0.0,
+          "trade_count": 3,
+          "win_rate": 0.0
+        },
+        "compare": {
+          "best_strategy": "boll_breakout",
+          "best_metric_value": 0.0,
+          "returned_experiments": 3
+        },
+        "risk": {
+          "confidence_level": 0.95,
+          "observations": 48,
+          "mean_return": -0.00023,
+          "volatility": 0.001056,
+          "annualized_volatility": 0.116096,
+          "value_at_risk": -0.00185,
+          "conditional_var": -0.00276,
+          "max_drawdown": -0.013736,
+          "worst_return": -0.003683,
+          "best_return": 0.001843
+        },
+        "alpha": {
+          "best_factor": "rsi_14",
+          "results": [
+            {
+              "factor": "rsi_14",
+              "observations": 32,
+              "ic": -0.670317,
+              "rank_ic": -0.700881,
+              "ir": -4.368417,
+              "rank_ir": -3.624792,
+              "positive_ic_rate": 0.0,
+              "forward_return_mean": -0.000404
+            },
+            {
+              "factor": "ma_5",
+              "observations": 42,
+              "ic": -0.216555,
+              "rank_ic": -0.034358,
+              "ir": -0.91708,
+              "rank_ir": -0.757203,
+              "positive_ic_rate": 0.212121,
+              "forward_return_mean": -0.000592
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trade_date": "2026-03-23",
+      "synced_symbols": 4,
+      "synced_rows": 192,
+      "sources": [
+        "akshare.stock_zh_a_hist_min_em.5m"
+      ],
+      "regression": {
+        "manifest": {
+          "symbols": 4,
+          "total_rows": 672
+        },
+        "backtest": {
+          "total_return": -0.002825,
+          "gross_total_return": -0.002825,
+          "benchmark_total_return": -0.026654,
+          "excess_total_return": 0.023829,
+          "annualized_return": -0.509766,
+          "benchmark_annualized_return": -0.998895,
+          "volatility": 0.088161,
+          "sharpe": -5.7822,
+          "max_drawdown": -0.004704,
+          "total_cost": 0.0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        "compare": {
+          "best_strategy": "boll_breakout",
+          "best_metric_value": 0.0,
+          "returned_experiments": 3
+        },
+        "risk": {
+          "confidence_level": 0.95,
+          "observations": 48,
+          "mean_return": -0.000275,
+          "volatility": 0.001969,
+          "annualized_volatility": 0.216567,
+          "value_at_risk": -0.001908,
+          "conditional_var": -0.004255,
+          "max_drawdown": -0.017874,
+          "worst_return": -0.008499,
+          "best_return": 0.004762
+        },
+        "alpha": {
+          "best_factor": "rsi_14",
+          "results": [
+            {
+              "factor": "rsi_14",
+              "observations": 32,
+              "ic": 0.141342,
+              "rank_ic": 0.094663,
+              "ir": 0.07677,
+              "rank_ir": 0.323396,
+              "positive_ic_rate": 0.521739,
+              "forward_return_mean": -0.000683
+            },
+            {
+              "factor": "ma_5",
+              "observations": 42,
+              "ic": -0.059836,
+              "rank_ic": 0.00667,
+              "ir": -0.611302,
+              "rank_ir": -0.501524,
+              "positive_ic_rate": 0.30303,
+              "forward_return_mean": -0.000677
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trade_date": "2026-03-24",
+      "synced_symbols": 4,
+      "synced_rows": 192,
+      "sources": [
+        "akshare.stock_zh_a_hist_min_em.5m"
+      ],
+      "regression": {
+        "manifest": {
+          "symbols": 4,
+          "total_rows": 768
+        },
+        "backtest": {
+          "total_return": 0.013962,
+          "gross_total_return": 0.013962,
+          "benchmark_total_return": 0.01006,
+          "excess_total_return": 0.003902,
+          "annualized_return": 31.920892,
+          "benchmark_annualized_return": 11.46025,
+          "volatility": 0.14288,
+          "sharpe": 223.410424,
+          "max_drawdown": -0.003683,
+          "total_cost": 0.0,
+          "trade_count": 2,
+          "win_rate": 1.0
+        },
+        "compare": {
+          "best_strategy": "macd",
+          "best_metric_value": 798.838844,
+          "returned_experiments": 3
+        },
+        "risk": {
+          "confidence_level": 0.95,
+          "observations": 48,
+          "mean_return": 0.000604,
+          "volatility": 0.001966,
+          "annualized_volatility": 0.216226,
+          "value_at_risk": -0.001848,
+          "conditional_var": -0.002158,
+          "max_drawdown": -0.00644,
+          "worst_return": -0.002765,
+          "best_return": 0.006623
+        },
+        "alpha": {
+          "best_factor": "ma_5",
+          "results": [
+            {
+              "factor": "ma_5",
+              "observations": 42,
+              "ic": -0.639986,
+              "rank_ic": -0.469803,
+              "ir": -0.506326,
+              "rank_ir": -0.450954,
+              "positive_ic_rate": 0.333333,
+              "forward_return_mean": 0.001067
+            },
+            {
+              "factor": "rsi_14",
+              "observations": 32,
+              "ic": -0.173324,
+              "rank_ic": -0.171819,
+              "ir": -0.907559,
+              "rank_ir": -0.708411,
+              "positive_ic_rate": 0.173913,
+              "forward_return_mean": 0.000232
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trade_date": "2026-03-25",
+      "synced_symbols": 4,
+      "synced_rows": 192,
+      "sources": [
+        "akshare.stock_zh_a_hist_min_em.5m"
+      ],
+      "regression": {
+        "manifest": {
+          "symbols": 4,
+          "total_rows": 960
+        },
+        "backtest": {
+          "total_return": 0.004596,
+          "gross_total_return": 0.004596,
+          "benchmark_total_return": 0.014056,
+          "excess_total_return": -0.00946,
+          "annualized_return": 2.176096,
+          "benchmark_annualized_return": 32.700234,
+          "volatility": 0.095085,
+          "sharpe": 22.885692,
+          "max_drawdown": -0.002751,
+          "total_cost": 0.0,
+          "trade_count": 3,
+          "win_rate": 0.666667
+        },
+        "compare": {
+          "best_strategy": "sma_cross",
+          "best_metric_value": 22.885692,
+          "returned_experiments": 3
+        },
+        "risk": {
+          "confidence_level": 0.95,
+          "observations": 48,
+          "mean_return": 0.00025,
+          "volatility": 0.001091,
+          "annualized_volatility": 0.120044,
+          "value_at_risk": -0.001516,
+          "conditional_var": -0.001837,
+          "max_drawdown": -0.00275,
+          "worst_return": -0.001842,
+          "best_return": 0.0037
+        },
+        "alpha": {
+          "best_factor": "rsi_14",
+          "results": [
+            {
+              "factor": "rsi_14",
+              "observations": 32,
+              "ic": -0.419994,
+              "rank_ic": -0.441969,
+              "ir": -1.841701,
+              "rank_ir": -2.036539,
+              "positive_ic_rate": 0.086957,
+              "forward_return_mean": 0.000459
+            },
+            {
+              "factor": "ma_5",
+              "observations": 42,
+              "ic": -0.002681,
+              "rank_ic": -0.072732,
+              "ir": -0.620765,
+              "rank_ir": -0.753881,
+              "positive_ic_rate": 0.181818,
+              "forward_return_mean": 0.00046
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "totals": {
+    "trade_days": 5,
+    "symbols": 4,
+    "sync_tasks": 20,
+    "synced_rows": 960,
+    "source_breakdown": {
+      "akshare.stock_zh_a_hist_min_em.5m": 20
+    }
+  },
+  "duckdb_manifest": {
+    "provider": "duckdb",
+    "interval": "5m",
+    "db_path": "output/market/market.duckdb",
+    "symbols": 4,
+    "total_rows": 960,
+    "last_updated_at": "2026-03-26 10:20:41",
+    "items": [
+      {
+        "symbol": "000001.SZ",
+        "rows": 240,
+        "trade_days": 5,
+        "start_ts": "2026-03-19 09:35:00",
+        "end_ts": "2026-03-25 15:00:00",
+        "last_ingested_at": "2026-03-26 10:20:41"
+      },
+      {
+        "symbol": "300750.SZ",
+        "rows": 240,
+        "trade_days": 5,
+        "start_ts": "2026-03-19 09:35:00",
+        "end_ts": "2026-03-25 15:00:00",
+        "last_ingested_at": "2026-03-26 10:20:41"
+      },
+      {
+        "symbol": "600000.SH",
+        "rows": 240,
+        "trade_days": 5,
+        "start_ts": "2026-03-19 09:35:00",
+        "end_ts": "2026-03-25 15:00:00",
+        "last_ingested_at": "2026-03-26 10:20:41"
+      },
+      {
+        "symbol": "601318.SH",
+        "rows": 240,
+        "trade_days": 5,
+        "start_ts": "2026-03-19 09:35:00",
+        "end_ts": "2026-03-25 15:00:00",
+        "last_ingested_at": "2026-03-26 10:20:41"
+      }
+    ]
+  }
+}
