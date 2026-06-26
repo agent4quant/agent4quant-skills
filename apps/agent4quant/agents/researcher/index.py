@@ -9,6 +9,7 @@
 """
 
 import json
+import os
 import uuid
 from openai import AsyncOpenAI
 
@@ -421,11 +422,20 @@ async def handler(context):
 
     # 初始化 OpenAI 客户端（走 EdgeOne AI Gateway）
     env = context.env
-    env_type = str(type(env))
-    env_repr = str(env)[:300]
-    has_key = hasattr(env, "get")
-    keys = list(env.keys()) if hasattr(env, "keys") else "no_keys_attr"
-    return {"status": "error", "response": f"DEBUG context.env: type={env_type}, repr={env_repr}, has_get={has_key}, keys={keys}"}
+    # context.env 可能是 dict、MappingProxyType 或自定义对象，兼容多种读取方式
+    if isinstance(env, dict):
+        api_key = env.get("AI_GATEWAY_API_KEY", os.environ.get("AI_GATEWAY_API_KEY", ""))
+        base_url = env.get("AI_GATEWAY_BASE_URL", os.environ.get("AI_GATEWAY_BASE_URL", "https://open.bigmodel.cn/api/paas/v4"))
+    elif hasattr(env, "get"):
+        api_key = env.get("AI_GATEWAY_API_KEY", os.environ.get("AI_GATEWAY_API_KEY", ""))
+        base_url = env.get("AI_GATEWAY_BASE_URL", os.environ.get("AI_GATEWAY_BASE_URL", "https://open.bigmodel.cn/api/paas/v4"))
+    else:
+        # 最后兜底：用 os.environ
+        api_key = os.environ.get("AI_GATEWAY_API_KEY", "")
+        base_url = os.environ.get("AI_GATEWAY_BASE_URL", "https://open.bigmodel.cn/api/paas/v4")
+
+    if not api_key:
+        return {"status": "error", "response": "AI Gateway API Key 未配置。请在 EdgeOne 控制台中设置环境变量 AI_GATEWAY_API_KEY。"}
 
     client = AsyncOpenAI(api_key=api_key, base_url=base_url)
 
@@ -443,7 +453,7 @@ async def handler(context):
     max_turns = 5
     for turn in range(max_turns):
         response = await client.chat.completions.create(
-            model="gpt-4o",
+            model=os.environ.get("AI_GATEWAY_MODEL", "glm-4-flash"),
             messages=messages,
             tools=QUANT_TOOLS,
             tool_choice="auto",
