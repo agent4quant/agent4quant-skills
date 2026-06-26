@@ -269,7 +269,7 @@
 <body>
 
 <div class="header">
-  <div class="header-logo">A4</div>
+  <div class="header-logo">A4Q</div>
   <span class="header-title">Agent4Quant</span>
   <span class="header-badge">量化研究助手</span>
   <div class="header-status">
@@ -387,7 +387,7 @@ function addMessage(role, html) {
   if (role === 'user') {
     div.innerHTML = `<div class="msg-avatar">👤</div><div class="msg-content">${simpleMarkdown(html)}</div>`;
   } else {
-    div.innerHTML = `<div class="msg-avatar">A4</div><div class="msg-content">${html}</div>`;
+    div.innerHTML = `<div class="msg-avatar">A4Q</div><div class="msg-content">${html}</div>`;
   }
   chat.appendChild(div);
   scrollDown();
@@ -398,7 +398,7 @@ function addTyping() {
   const div = document.createElement('div');
   div.className = 'msg agent';
   div.id = 'typing-indicator';
-  div.innerHTML = `<div class="msg-avatar">A4</div><div class="msg-content"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  div.innerHTML = `<div class="msg-avatar">A4Q</div><div class="msg-content"><div class="typing"><span></span><span></span><span></span></div></div>`;
   chat.appendChild(div);
   scrollDown();
   return div;
