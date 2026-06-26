@@ -391,21 +391,27 @@ async def handler(context):
     EdgeOne Makers Agent 入口。
 
     context 注入字段：
-    - context.request  : Web Request（body/headers/signal）
-    - context.env      : 环境变量（AI_GATEWAY_API_KEY, AI_GATEWAY_BASE_URL）
-    - context.store    : 会话级对话存储
-    - context.tools    : LLM 工具清单（sandbox 原子工具）
-    - context.sandbox  : 沙箱原子 API
-    - context.tracer   : OpenTelemetry 追踪
+    - context.request.body : dict，已解析的请求体
+    - context.env           : 环境变量（AI_GATEWAY_API_KEY, AI_GATEWAY_BASE_URL）
+    - context.store          : 会话级对话存储
+    - context.tools          : LLM 工具清单（sandbox 原子工具）
+    - context.sandbox        : 沙箱原子 API
+    - context.tracer         : OpenTelemetry 追踪
+    - context.conversation_id: 当前会话 ID
     """
-    try:
-        body = await _parse_body(context.request.body)
-    except Exception:
+    # EdgeOne Makers 已自动解析 body 为 dict
+    body = context.request.body
+    if body is None:
         body = {}
+    if not isinstance(body, dict):
+        try:
+            body = json.loads(str(body))
+        except Exception:
+            body = {}
 
-    user_message = body.get("message", body.get("query", ""))
-    if not user_message and isinstance(body, str):
-        user_message = body
+    user_message = ""
+    if isinstance(body, dict):
+        user_message = body.get("message", body.get("query", body.get("content", "")))
 
     if not user_message:
         return {
