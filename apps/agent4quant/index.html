@@ -437,20 +437,33 @@ async function sendMessage() {
 
     if (!resp.ok) {
       if (resp.status === 401) {
-        throw new Error('认证失败 (401)。请通过 EdgeOne 控制台预览链接访问，或确认域名鉴权配置。');
+        throw new Error('认证失败。请通过 EdgeOne 控制台预览链接访问，或确认域名鉴权状态。');
       }
-      if (resp.status === 429) {
-        throw new Error('请求过于频繁 (429)，请稍后再试。');
-      }
-      throw new Error('服务异常 (' + resp.status + ')');
+      throw new Error('服务异常，HTTP ' + resp.status);
     }
 
     const data = await resp.json();
-    const response = data.response || data.content || JSON.stringify(data);
+
+    // EdgeOne Agent 运行时错误（AGENT_RUN_ERROR）
+    if (data.code === 'AGENT_RUN_ERROR') {
+      const msg = data.message || '';
+      if (msg.includes('429') || msg.includes('速率限制') || msg.includes('rate')) {
+        throw new Error('API 调用频率超限，请等待 30 秒后重试。免费 API 每分钟有调用次数上限。');
+      }
+      if (msg.includes('401') || msg.includes('unauthorized') || msg.includes('认证')) {
+        throw new Error('API Key 认证失败，请检查环境变量配置。');
+      }
+      throw new Error('Agent 运行异常：' + msg.slice(0, 150));
+    }
+
+    const response = data.response || data.content || '';
     const status = data.status;
 
-    if (status === 'error') {
-      addMessage('agent', '<span style="color:var(--red)">❌ ' + simpleMarkdown(response) + '</span>');
+    if (status === 'error' || (response && response.startsWith('⚠️'))) {
+      addMessage('agent', '<span style="color:var(--red)">' + simpleMarkdown(response) + '</span>');
+      setStatus('error');
+    } else if (!response) {
+      addMessage('agent', '<span style="color:var(--text-secondary)">（Agent 未返回有效内容，请重试）</span>');
       setStatus('error');
     } else {
       // Render tool calls if present

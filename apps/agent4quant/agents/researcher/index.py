@@ -451,56 +451,69 @@ async def handler(context):
 
     # ── Agent 循环（最多 5 轮工具调用）──
     max_turns = 5
-    for turn in range(max_turns):
-        response = await client.chat.completions.create(
-            model=os.environ.get("AI_GATEWAY_MODEL", "glm-4.7-flash"),
-            messages=messages,
-            tools=QUANT_TOOLS,
-            tool_choice="auto",
-            temperature=0.3,
-        )
+    final_response = ""
+    try:
+        for turn in range(max_turns):
+            response = await client.chat.completions.create(
+                model=os.environ.get("AI_GATEWAY_MODEL", "gpt-5.4-mini"),
+                messages=messages,
+                tools=QUANT_TOOLS,
+                tool_choice="auto",
+                temperature=0.3,
+            )
 
-        choice = response.choices[0]
-        msg = choice.message
+            choice = response.choices[0]
+            msg = choice.message
 
-        # 无工具调用 → 结束循环
-        if not msg.tool_calls:
-            messages.append({"role": "assistant", "content": msg.content})
-            final_response = msg.content or ""
-            break
+            # 无工具调用 → 结束循环
+            if not msg.tool_calls:
+                messages.append({"role": "assistant", "content": msg.content})
+                final_response = msg.content or ""
+                break
 
-        # 有工具调用 → 执行
-        messages.append({
-            "role": "assistant",
-            "content": msg.content,
-            "tool_calls": [
-                {
-                    "id": tc.id,
-                    "type": "function",
-                    "function": {
-                        "name": tc.function.name,
-                        "arguments": tc.function.arguments,
-                    },
-                }
-                for tc in msg.tool_calls
-            ],
-        })
-
-        for tc in msg.tool_calls:
-            tool_name = tc.function.name
-            tool_args = json.loads(tc.function.arguments)
-
-            # 在沙箱中执行工具
-            tool_result = await _execute_tool(context, tool_name, tool_args)
-
+            # 有工具调用 → 执行
             messages.append({
-                "role": "tool",
-                "tool_call_id": tc.id,
-                "content": json.dumps(tool_result, ensure_ascii=False, default=str),
+                "role": "assistant",
+                "content": msg.content,
+                "tool_calls": [
+                    {
+                        "id": tc.id,
+                        "type": "function",
+                        "function": {
+                            "name": tc.function.name,
+                            "arguments": tc.function.arguments,
+                        },
+                    }
+                    for tc in msg.tool_calls
+                ],
             })
-    else:
-        # 超过最大轮数，让 LLM 总结
-        final_response = "分析进行中，但步骤较多。请尝试更具体地描述你的需求。"
+
+            for tc in msg.tool_calls:
+                tool_name = tc.function.name
+                tool_args = json.loads(tc.function.arguments)
+
+                # 在沙箱中执行工具
+                tool_result = await _execute_tool(context, tool_name, tool_args)
+
+                messages.append({
+                    "role": "tool",
+                    "tool_call_id": tc.id,
+                    "content": json.dumps(tool_result, ensure_ascii=False, default=str),
+                })
+        else:
+            # 超过最大轮数，让 LLM 总结
+            final_response = "分析进行中，但步骤较多。请尝试更具体地描述你的需求。"
+
+    except Exception as e:
+        error_msg = str(e)
+        if "429" in error_msg or "rate" in error_msg.lower() or "速率" in error_msg:
+            final_response = "⚠️ API 调用频率超限，请稍等 30 秒后再试。免费 API 通常有每分钟调用次数限制。"
+        elif "401" in error_msg or "unauthorized" in error_msg.lower():
+            final_response = "⚠️ API Key 认证失败，请检查环境变量 AI_GATEWAY_API_KEY 是否正确。"
+        elif "timeout" in error_msg.lower() or "timed out" in error_msg.lower():
+            final_response = "⏳ 请求超时，模型响应过慢。请尝试缩短问题或稍后重试。"
+        else:
+            final_response = f"⚠️ 服务暂时不可用，请稍后重试。错误详情：{error_msg[:200]}"
 
     # 保存对话历史
     await _save_history(
