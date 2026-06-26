@@ -399,21 +399,6 @@ async def handler(context):
     - context.tracer         : OpenTelemetry 追踪
     - context.conversation_id: 当前会话 ID
     """
-    # 调试：查看 context.request.body 的实际内容
-    body = context.request.body
-    debug_info = {
-        "body_type": str(type(body)),
-        "body_repr": str(body)[:500],
-        "has_message_key": isinstance(body, dict) and "message" in body,
-        "has_query_key": isinstance(body, dict) and "query" in body,
-        "body_keys": list(body.keys()) if isinstance(body, dict) else "not_a_dict",
-        "conversation_id": getattr(context, "conversation_id", "no_attr"),
-    }
-    return {
-        "status": "ok",
-        "response": f"DEBUG: {json.dumps(debug_info, ensure_ascii=False, indent=2)}",
-    }
-
     # EdgeOne Makers 已自动解析 body 为 dict
     body = context.request.body
     if body is None:
