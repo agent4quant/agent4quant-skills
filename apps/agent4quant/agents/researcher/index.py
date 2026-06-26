@@ -420,11 +420,12 @@ async def handler(context):
         }
 
     # 初始化 OpenAI 客户端（走 EdgeOne AI Gateway）
-    api_key = context.env.get("AI_GATEWAY_API_KEY", "")
-    base_url = context.env.get("AI_GATEWAY_BASE_URL", "https://api.openai.com/v1")
-
-    if not api_key:
-        return {"status": "error", "response": "AI Gateway API key 未配置"}
+    env = context.env
+    env_type = str(type(env))
+    env_repr = str(env)[:300]
+    has_key = hasattr(env, "get")
+    keys = list(env.keys()) if hasattr(env, "keys") else "no_keys_attr"
+    return {"status": "error", "response": f"DEBUG context.env: type={env_type}, repr={env_repr}, has_get={has_key}, keys={keys}"}
 
     client = AsyncOpenAI(api_key=api_key, base_url=base_url)
 
