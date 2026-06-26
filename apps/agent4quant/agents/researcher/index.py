@@ -453,7 +453,7 @@ async def handler(context):
     max_turns = 5
     for turn in range(max_turns):
         response = await client.chat.completions.create(
-            model=os.environ.get("AI_GATEWAY_MODEL", "glm-4-flash"),
+            model=os.environ.get("AI_GATEWAY_MODEL", "glm-4.7-flash"),
             messages=messages,
             tools=QUANT_TOOLS,
             tool_choice="auto",
