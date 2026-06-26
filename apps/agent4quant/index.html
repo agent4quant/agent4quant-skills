@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent4Quant - 量化研究助手</title>
+<style>
+  :root {
+    --bg: #0a0e17;
+    --surface: #111827;
+    --surface-hover: #1a2235;
+    --border: #1e293b;
+    --text: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --accent: #3b82f6;
+    --accent-glow: rgba(59,130,246,0.15);
+    --red: #ef4444;
+    --red-bg: rgba(239,68,68,0.1);
+    --green: #22c55e;
+    --green-bg: rgba(34,197,94,0.1);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Header */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    z-index: 10;
+  }
+  .header-logo {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--accent), #8b5cf6);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700;
+  }
+  .header-title { font-size: 15px; font-weight: 600; }
+  .header-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 99px;
+    background: var(--accent-glow);
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .header-status {
+    margin-left: auto;
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--text-secondary);
+  }
+  .status-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+  }
+  .status-dot.error { background: var(--red); }
+
+  /* Main chat area */
+  .chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .chat::-webkit-scrollbar { width: 4px; }
+  .chat::-webkit-scrollbar-track { background: transparent; }
+  .chat::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* Welcome */
+  .welcome {
+    text-align: center;
+    padding: 60px 20px 40px;
+  }
+  .welcome-icon {
+    width: 64px; height: 64px;
+    background: linear-gradient(135deg, var(--accent), #8b5cf6);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 16px;
+  }
+  .welcome h2 { font-size: 20px; margin-bottom: 8px; }
+  .welcome p { color: var(--text-secondary); font-size: 14px; max-width: 480px; margin: 0 auto 20px; line-height: 1.6; }
+  .quick-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .quick-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .quick-btn:hover {
+    background: var(--surface-hover);
+    color: var(--text);
+    border-color: var(--accent);
+  }
+
+  /* Messages */
+  .msg {
+    display: flex;
+    gap: 10px;
+    max-width: 800px;
+    width: 100%;
+    animation: fadeIn 0.2s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .msg.user { flex-direction: row-reverse; align-self: flex-end; }
+  .msg-avatar {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+  }
+  .msg.user .msg-avatar { background: var(--surface); color: var(--text-secondary); }
+  .msg.agent .msg-avatar { background: linear-gradient(135deg, var(--accent), #8b5cf6); color: #fff; }
+  .msg-content {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.65;
+    overflow-x: auto;
+  }
+  .msg.user .msg-content {
+    background: var(--accent-glow);
+    border-color: rgba(59,130,246,0.2);
+  }
+  .msg-content p { margin-bottom: 8px; }
+  .msg-content p:last-child { margin-bottom: 0; }
+  .msg-content code {
+    background: rgba(0,0,0,0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "SF Mono", "Fira Code", monospace;
+  }
+  .msg-content pre {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 8px 0;
+    font-family: "SF Mono","Fira Code",monospace;
+  }
+  .msg-content pre code { background: none; padding: 0; }
+  .msg-content strong { color: var(--accent); }
+
+  /* Tool call bubble */
+  .tool-call {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    margin: 6px 0;
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .tool-call .tool-icon { font-size: 14px; }
+  .tool-call .tool-name { color: var(--accent); font-weight: 500; }
+  .tool-call.pending { opacity: 0.6; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+  .tool-call.done { border-left-color: var(--green); }
+
+  /* Loading dots */
+  .typing {
+    display: flex; gap: 4px; padding: 4px 0;
+  }
+  .typing span {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--text-secondary);
+    animation: bounce 1.2s infinite;
+  }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+
+  /* Price colors */
+  .up { color: var(--red); }
+  .down { color: var(--green); }
+
+  /* Input */
+  .input-bar {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 12px 20px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    flex-shrink: 0;
+  }
+  .input-bar textarea {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: none;
+    outline: none;
+    max-height: 120px;
+    line-height: 1.5;
+  }
+  .input-bar textarea:focus { border-color: var(--accent); }
+  .input-bar textarea::placeholder { color: var(--text-secondary); }
+  .send-btn {
+    background: var(--accent);
+    border: none;
+    color: #fff;
+    width: 40px; height: 40px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .send-btn:hover { opacity: 0.9; }
+  .send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* Error */
+  .error-banner {
+    background: var(--red-bg);
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--red);
+    margin: 0 20px;
+    display: none;
+  }
+  .error-banner.show { display: block; }
+  .error-banner code { font-size: 12px; opacity: 0.8; }
+
+  @media (max-width: 640px) {
+    .chat { padding: 12px; gap: 12px; }
+    .input-bar { padding: 10px 12px; }
+    .welcome { padding: 30px 12px 20px; }
+    .welcome h2 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">A4</div>
+  <span class="header-title">Agent4Quant</span>
+  <span class="header-badge">量化研究助手</span>
+  <div class="header-status">
+    <span class="status-dot" id="statusDot"></span>
+    <span id="statusText">就绪</span>
+  </div>
+</div>
+
+<div class="error-banner" id="errorBanner"></div>
+
+<div class="chat" id="chat">
+  <div class="welcome">
+    <div class="welcome-icon">📊</div>
+    <h2>Agent4Quant 量化研究助手</h2>
+    <p>我是你的 AI 量化研究伙伴。可以帮你查询 A 股/港股/美股行情、计算技术指标、生成分析报告。策略回测请回到本地 CLI 执行。</p>
+    <div class="quick-actions">
+      <button class="quick-btn" onclick="quickAsk('帮我看看 000001.SZ 最近3个月表现怎么样')">📈 查看 000001.SZ</button>
+      <button class="quick-btn" onclick="quickAsk('计算 600519.SH 的 MACD 和 RSI 指标')">📐 600519 技术指标</button>
+      <button class="quick-btn" onclick="quickAsk('分析一下 AAPL 近期的走势')">🍎 AAPL 走势分析</button>
+      <button class="quick-btn" onclick="quickAsk('港股 00700 最近表现如何')">🏦 00700 腾讯</button>
+    </div>
+  </div>
+</div>
+
+<div class="input-bar">
+  <textarea id="userInput" rows="1" placeholder="输入股票代码或问题，例如：帮我看看 000001.SZ 最近表现..." onkeydown="handleKey(event)"></textarea>
+  <button class="send-btn" id="sendBtn" onclick="sendMessage()" title="发送">➤</button>
+</div>
+
+<script>
+// ── 配置 ──
+const AGENT_PATH = '/researcher';
+const MAX_HISTORY = 20;
+
+// ── 会话管理 ──
+function getConvId() {
+  let id = localStorage.getItem('a4q_conv_id');
+  if (!id) {
+    id = 'conv_' + crypto.randomUUID().replace(/-/g, '').slice(0, 24);
+    localStorage.setItem('a4q_conv_id', id);
+  }
+  return id;
+}
+
+const CONV_ID = getConvId();
+
+// ── DOM ──
+const chat = document.getElementById('chat');
+const input = document.getElementById('userInput');
+const sendBtn = document.getElementById('sendBtn');
+const errorBanner = document.getElementById('errorBanner');
+const statusDot = document.getElementById('statusDot');
+const statusText = document.getElementById('statusText');
+let isLoading = false;
+let hasWelcomed = false;
+
+// ── Helpers ──
+function autoResize() {
+  input.style.height = 'auto';
+  input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+}
+input.addEventListener('input', autoResize);
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+function setStatus(state) {
+  if (state === 'loading') {
+    statusDot.className = 'status-dot';
+    statusDot.style.background = '#f59e0b';
+    statusText.textContent = '分析中...';
+  } else if (state === 'error') {
+    statusDot.className = 'status-dot error';
+    statusText.textContent = '连接异常';
+  } else {
+    statusDot.className = 'status-dot';
+    statusDot.style.background = '';
+    statusText.textContent = '就绪';
+  }
+}
+
+function showError(msg) {
+  errorBanner.innerHTML = msg;
+  errorBanner.classList.add('show');
+  setTimeout(() => errorBanner.classList.remove('show'), 8000);
+}
+
+function scrollDown() {
+  requestAnimationFrame(() => { chat.scrollTop = chat.scrollHeight; });
+}
+
+// ── 渲染 ──
+function simpleMarkdown(text) {
+  if (!text) return '';
+  return text
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\n/g, '<br>')
+    .replace(/<br>\s*<br>/g, '</p><p>')
+    .replace(/^/, '<p>').replace(/$/, '</p>');
+}
+
+function addMessage(role, html) {
+  if (!hasWelcomed) {
+    // Remove welcome screen on first real message
+    const w = chat.querySelector('.welcome');
+    if (w) w.remove();
+    hasWelcomed = true;
+  }
+
+  const div = document.createElement('div');
+  div.className = 'msg ' + role;
+  if (role === 'user') {
+    div.innerHTML = `<div class="msg-avatar">👤</div><div class="msg-content">${simpleMarkdown(html)}</div>`;
+  } else {
+    div.innerHTML = `<div class="msg-avatar">A4</div><div class="msg-content">${html}</div>`;
+  }
+  chat.appendChild(div);
+  scrollDown();
+  return div;
+}
+
+function addTyping() {
+  const div = document.createElement('div');
+  div.className = 'msg agent';
+  div.id = 'typing-indicator';
+  div.innerHTML = `<div class="msg-avatar">A4</div><div class="msg-content"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  chat.appendChild(div);
+  scrollDown();
+  return div;
+}
+
+function removeTyping() {
+  const el = document.getElementById('typing-indicator');
+  if (el) el.remove();
+}
+
+// ── API 调用 ──
+async function sendMessage() {
+  const text = input.value.trim();
+  if (!text || isLoading) return;
+
+  isLoading = true;
+  sendBtn.disabled = true;
+  input.value = '';
+  input.style.height = 'auto';
+  setStatus('loading');
+
+  addMessage('user', text);
+  const typing = addTyping();
+
+  try {
+    const resp = await fetch(AGENT_PATH, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Makers-Conversation-Id': CONV_ID,
+      },
+      body: JSON.stringify({ message: text }),
+    });
+
+    removeTyping();
+
+    if (!resp.ok) {
+      if (resp.status === 401) {
+        throw new Error('认证失败 (401)。请通过 EdgeOne 控制台预览链接访问，或确认域名鉴权配置。');
+      }
+      if (resp.status === 429) {
+        throw new Error('请求过于频繁 (429)，请稍后再试。');
+      }
+      throw new Error('服务异常 (' + resp.status + ')');
+    }
+
+    const data = await resp.json();
+    const response = data.response || data.content || JSON.stringify(data);
+    const status = data.status;
+
+    if (status === 'error') {
+      addMessage('agent', '<span style="color:var(--red)">❌ ' + simpleMarkdown(response) + '</span>');
+      setStatus('error');
+    } else {
+      // Render tool calls if present
+      let html = '';
+      if (data.tool_calls) {
+        for (const tc of data.tool_calls) {
+          html += `<div class="tool-call done"><span class="tool-icon">🔧</span> <span class="tool-name">${tc.name || '工具调用'}</span></div>`;
+        }
+      }
+      html += simpleMarkdown(response);
+      addMessage('agent', html);
+      setStatus('ready');
+    }
+  } catch (e) {
+    removeTyping();
+    showError(e.message);
+    addMessage('agent', '<span style="color:var(--red)">⚠️ ' + simpleMarkdown(e.message) + '</span>');
+    setStatus('error');
+  } finally {
+    isLoading = false;
+    sendBtn.disabled = false;
+    input.focus();
+  }
+}
+
+function quickAsk(q) {
+  input.value = q;
+  sendMessage();
+}
+</script>
+</body>
+</html>
